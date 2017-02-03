@@ -20,7 +20,7 @@ export const router = (
   <Router history={createBrowserHistory()}>
     <Route component={App}>
       <IndexRoute component={Home} />
-      <Route path="/lazy" lazyLoad={loadComponent} component={LazyLoader}
+      <Route path="/lazy" lazyLoad={loadComponent} component={LazyLoader} />
     </Route>
   </Router>
 );
