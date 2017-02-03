@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "version": "2.1.5",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": ".",
+    "stripInternal": true,
+    "outDir": "./dist/",
+    "sourceMap": false,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom",
+      "es7"
+    ],
+    "experimentalDecorators": true,
+    "types": [
+      "inferno"
+    ]
+  },
+  "files": [
+    "./src/lazyload-component.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

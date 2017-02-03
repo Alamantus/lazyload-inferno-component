@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "version": "2.1.5",
+  "compilerOptions": {
+    "sourceMap": false,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom",
+      "es7"
+    ],
+    "experimentalDecorators": true,
+    "types": [
+      "inferno",
+      "jasmine"
+    ]
+  },
+  "files": [
+    "./spec/lazyload-component.spec.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
