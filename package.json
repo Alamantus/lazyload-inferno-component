@@ -1,6 +1,6 @@
 {
   "name": "lazyload-inferno-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Inferno component to do a lazy load",
   "main": "index.js",
   "scripts": {
