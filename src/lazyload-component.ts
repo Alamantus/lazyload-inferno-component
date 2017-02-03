@@ -1,7 +1,9 @@
 import createElement from "inferno-create-element";
 import Component from "inferno-component";
 
-/** @internal */
+/** @internal 
+	* Function pretty much copied from infernojs - Route.ts
+  */
 function rest(object: Object, excluded: string[]): Object {
   const t = {};
   for (let p in object) {
