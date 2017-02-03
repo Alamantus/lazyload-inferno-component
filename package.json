@@ -1,6 +1,6 @@
 {
   "name": "lazyload-inferno-component",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Inferno component to do a lazy load",
   "main": "index.js",
   "scripts": {
@@ -15,9 +15,12 @@
     "inferno-component": "^1.2.2",
     "inferno-create-element": "^1.2.2"
   },
-	"homepage": "https://github.com/LGabAnnell/lazyload-inferno-component",
+	"keywords": ["inferno", "inferno lazy load", "lazy-loading"],
+  "homepage": "https://github.com/LGabAnnell/lazyload-inferno-component",
   "devDependencies": {
+    "@types/jasmine": "^2.5.41",
     "inferno-test-utils": "^1.2.2",
+    "jasmine": "^2.5.3",
     "rimraf": "^2.5.4",
     "typescript": "^2.1.5"
   }

@@ -6,7 +6,9 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var inferno_create_element_1 = require("inferno-create-element");
 var inferno_component_1 = require("inferno-component");
-/** @internal */
+/** @internal
+    * Function pretty much copied from infernojs - Route.ts
+  */
 function rest(object, excluded) {
     var t = {};
     for (var p in object) {
