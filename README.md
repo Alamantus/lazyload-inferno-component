@@ -34,5 +34,5 @@ export const MyComponent = () => {
       <LazyLoader lazyLoad={loadComponent} />
     </div>
   );
-}
+};
 ```
