@@ -2,6 +2,9 @@
 inferno component to lazily load other components
 
 # Usage
+
+`npm install --save lazyload-inferno-component`
+
 With `inferno-router` and webpack:
 ```javascript
 import LazyLoader from "lazyload-inferno-component";
@@ -17,13 +20,13 @@ export const router = (
   <Router history={createBrowserHistory()}>
     <Route component={App}>
       <IndexRoute component={Home} />
-      <Route path="/lazy" lazyLoad={loadComponent} component={LazyLoader}
+      <Route path="/lazy" lazyLoad={loadComponent} component={LazyLoader} />
     </Route>
   </Router>
 );
 ```
 
-In another component:
+Inside another component:
 ```javascript
 export const MyComponent = () => {
   return (
@@ -31,5 +34,6 @@ export const MyComponent = () => {
       <LazyLoader lazyLoad={loadComponent} />
     </div>
   );
-}
+};
 ```
+Github repository available at https://github.com/LGabAnnell/lazyload-inferno-component
