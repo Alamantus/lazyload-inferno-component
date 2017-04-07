@@ -1,106 +1,100 @@
 import infernoTestUtils from "inferno-test-utils";
 import c from "inferno-create-element";
 import LazyLoad from "../../";
-
-function setState(object, cb?) {
-  for (let p in object) {
-    this.state[p] = object[p];
-  }
-  return true;
-}
-
-function cycle(component) {
-  component.setState = setState.bind(component);
-  component.componentWillMount();
-}
+import {VNode} from "inferno";
 
 describe("LazyLoader", () => {
-  it("should have no children", () => {
-    let component = c(LazyLoad, null, null);
-    expect(component.props.children).toBe(null);
-  });
 
   it("creates a child node", () => {
-    let component = new LazyLoad(
+    let component = c(
+      LazyLoad,
       {
-        lazyLoad: (callback) => {
-          callback("div");
+        lazyLoad: (cb) => {
+          cb("div");
         }
       },
-      {router: null}
+      null
     );
 
-    cycle(component);
+    const rendered: any = infernoTestUtils.renderIntoDocument(component);
+    const found: any = infernoTestUtils.findRenderedVNodeWithType(rendered, LazyLoad).children;
 
-    expect(infernoTestUtils.isElement(component.state.child)).toBe(true);
-    expect(component.state.child.type).toEqual("div");
+    expect(found.state.child.type).toEqual("div");
   });
 
-  it("should pass its children down to the child node", () => {
-    let component = new LazyLoad(
+  it("passes its children down to the child node", () => {
+    let component  = c(
+      LazyLoad,
       {
-        lazyLoad: (callback) => {
-          callback("div");
-        },
-        children: c("div", null, "hello")
+        lazyLoad: (cb) => {
+          cb("div");
+        }
       },
-      {router: null}
+      c("div", { className: "hello" })
     );
 
-    cycle(component);
+    const rendered: any = infernoTestUtils.renderIntoDocument(component);
 
-    expect(component.state.child.children).toBeDefined();
+    const found: any = infernoTestUtils.findRenderedVNodeWithType(rendered, LazyLoad).children;
+
+    expect(found.state.child.children.className).toEqual("hello");
   });
 
-  it("should pass its props down to the child node", () => {
-    let component = new LazyLoad(
+  it("passes its props down to the child node", () => {
+    let component = c(
+      LazyLoad,
       {
         lazyLoad: (callback) => {
-          callback("div");
+          callback("div")
         },
-        children: c("div", null, "hello"),
-        className: "classy"
+        className: "classy",
+        test: 5
       },
-      {router: null}
+      null
     );
 
-    cycle(component);
+    const rendered: any = infernoTestUtils.renderIntoDocument(component);
 
-    expect((component.state.child.props as any).className).toEqual("classy");
+    const found: any = infernoTestUtils.findRenderedVNodeWithType(rendered, LazyLoad).children;
+
+    expect(found.state.child.className).toEqual("classy");
+    expect(found.state.child.props.test).toEqual(5);
   });
 
-  it("should apply additional props to the child node", () => {
-    let component = new LazyLoad(
+  it("applies additional props passed in the callback to the child node", () => {
+    let component = c(
+      LazyLoad,
       {
         lazyLoad: (callback) => {
-          callback("div", {otherProp: "other"});
+          callback("div", { otherProp: "other" });
         },
-        children: c("div", null, "hello"),
-        className: "classy"
+        className: "classy",
+        test: 5
       },
-      {router: null}
+      null
     );
 
-    cycle(component);
+    const rendered: any = infernoTestUtils.renderIntoDocument(component);
+    const found: any = infernoTestUtils.findRenderedVNodeWithType(rendered, LazyLoad).children;
 
-    let child = component.state.child;
-    expect((child.props as any).otherProp).toEqual("other");
-    expect((child.props as any).className).toEqual("classy");
+    expect(found.state.child.props.otherProp).toEqual("other");
   });
 
-  it("should return the child node on render", () => {
-    let component = new LazyLoad(
+  it("returns the child node on render", () => {
+    let component: VNode = c(
+      LazyLoad,
       {
         lazyLoad: (callback) => {
-          callback("div", {otherProp: "other"});
+          callback("button", { disabled: true });
         },
-      },
-      {router: null}
+        className: "classy",
+        test: 5
+      }
     );
 
-    cycle(component);
+    const rendered: any = infernoTestUtils.renderIntoDocument(component);
+    const found: any = infernoTestUtils.findRenderedVNodeWithType(rendered, LazyLoad).children;
 
-    expect(infernoTestUtils.isElement(component.render())).toBe(true);
-    expect(component.render().type).toEqual("div");
+    expect(found.render().dom.disabled).toBe(true);
   });
 });

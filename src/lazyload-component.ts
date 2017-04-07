@@ -1,5 +1,6 @@
 import createElement from "inferno-create-element";
 import Component from "inferno-component";
+import {VNode} from "inferno";
 
 /** @internal 
 	* Function pretty much copied from infernojs - Route.ts
@@ -15,14 +16,16 @@ function rest(object: Object, excluded: string[]): Object {
 }
 
 export interface ILazyLoaderProps {
-  lazyLoad: (componentName: Type | string, context: any) => void;
+  lazyLoad: (componentName: Component<any, any> | string, context: any) => void;
   children: VNode | VNode[];
   context: any;
+  path: string;
+  params: string;
 }
 
 export default class LazyLoader extends Component<ILazyLoaderProps, any> {
 
-  lazyLoad: (componentName: any, context: any) => void;
+  lazyLoad: (callback: Function, context: any) => void;
   props: ILazyLoaderProps;
   state: {
     child: VNode | null;
@@ -41,7 +44,7 @@ export default class LazyLoader extends Component<ILazyLoaderProps, any> {
     this.loadComponent = this.loadComponent.bind(this);
   }
 
-  loadComponent(componentName: Type, props?: any) {
+  loadComponent(componentName: Component<any, any>, props?: any) {
     let finalProps;
     if (!props) {
       finalProps = rest(this.props, ["lazyLoad", "children"]);

@@ -1,6 +1,6 @@
 {
   "compileOnSave": false,
-  "version": "2.1.5",
+  "version": "2.2.2",
   "compilerOptions": {
     "declaration": true,
     "declarationDir": ".",
@@ -16,7 +16,7 @@
     ],
     "experimentalDecorators": true,
     "types": [
-      "inferno"
+      "jasmine"
     ]
   },
   "files": [

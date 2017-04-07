@@ -4,6 +4,7 @@
   "compilerOptions": {
     "sourceMap": false,
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es5",
     "lib": [
       "es6",
@@ -12,7 +13,6 @@
     ],
     "experimentalDecorators": true,
     "types": [
-      "inferno",
       "jasmine"
     ]
   },

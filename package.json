@@ -1,24 +1,33 @@
 {
   "name": "lazyload-inferno-component",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Inferno component to do a lazy load",
   "main": "index.js",
   "scripts": {
-    "test": "tsc -p tests/tsconfig.json && jasmine tests/spec/lazyload-component.spec.js",
+    "test": "karma start --single-run",
     "build": "tsc",
     "clean": "rimraf dist"
   },
   "author": "gabriel",
   "license": "MIT",
   "dependencies": {
-    "inferno": "^1.2.2",
-    "inferno-component": "^1.2.2",
-    "inferno-create-element": "^1.2.2"
+    "inferno": "^1.6.2",
+    "inferno-component": "^1.6.2",
+    "inferno-create-element": "^1.6.2"
   },
-	"homepage": "https://github.com/LGabAnnell/lazyload-inferno-component",
+  "homepage": "https://github.com/LGabAnnell/lazyload-inferno-component",
   "devDependencies": {
-    "inferno-test-utils": "^1.2.2",
-    "rimraf": "^2.5.4",
-    "typescript": "^2.1.5"
+    "@types/jasmine": "^2.5.47",
+    "inferno-test-utils": "^1.6.2",
+    "jasmine": "^2.5.3",
+    "karma": "^1.6.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-webpack": "^2.0.3",
+    "rimraf": "^2.6.1",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.3"
   }
 }
